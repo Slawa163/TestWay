@@ -1,0 +1,9 @@
+
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid p-0" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }});" {{ end}} > 
+	<a class="row bg-black-50 h-100 m-0 p-0" href="{{ .Page.Params.link_url }}" >
+	 <div class="col-10 mx-auto my-auto text-center py-0 my-0">
+	   <h1 class="text-white font-weight-bold mb-4" >{{ .Page.Params.name }}</h1>
+	   <h5 class="text-white font-weight-bold mt-3 mb-0" >{{ .Page.Params.tagline }}</h5>
+	 </div> 
+	</a>
+</section>

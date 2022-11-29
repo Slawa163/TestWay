@@ -1,0 +1,53 @@
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid py-5" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >
+  {{ if .Page.Params.title }}
+    <div class="row">
+      <div class="col-lg-12 mb-5 text-center">
+        <h2>{{ .Page.Params.title }}</h2>
+        <hr>
+      </div>
+    </div><!-- /.row -->
+  {{ end }}
+  {{ range $rindex, $ritem :=.Page.Params.rows }}
+    <div class="row justify-content-center px-auto">
+      {{ if .title }}
+        <div class="col-lg-9 mb-5 text-center">
+          <h2>{{ .title }}</h2>
+          <hr>
+        </div>
+      {{ end }}
+      {{ range $index, $item := .items }}
+        <div class="col-12 col-md-9 col-lg-5 {{ if modBool $rindex 2 }} {{ if eq $index 0 }} order-md-last {{ end }} {{ end }} ">
+          <div class="card h-100 border-0">
+            {{ with .faicon }}
+              <div class="card-header text-center">
+                {{ partial "fontawesome.html" . }}
+	            </div>
+	          {{ end }}
+            {{ with .image }}
+              <img class="card-img-top mt-4" src="{{ . }}" alt="">
+	          {{ end }}
+            {{ if .title }}
+              <div class="card-body pl-0 ml-0 my-auto small"> 
+                <h4 class="card-title pl-4 text-warn">	        
+  	              {{ .title }}
+  	            </h4>	
+  	            {{ if .descriptions }}
+  	              <ul>
+                    {{ range .descriptions }}
+                      <li class="lead card-text pl-0 my-0 py-0">{{ .title }}</li>
+  	                {{ end }}
+  	              </ul>
+  	            {{ end }}
+              </div>
+            {{ end }}  
+	          {{ if .url }}
+              <div class="card-footer">
+                <a href="{{ .url }}" class="btn btn-primary">{{ i18n "link" }}</a>
+              </div>
+	          {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div><!-- /.row -->
+  {{ end }}
+</section><!-- /.container -->

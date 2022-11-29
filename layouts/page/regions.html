@@ -1,0 +1,48 @@
+{{ $headless := .GetPage "images" }}
+{{ $number := 0 }} 
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid py-5" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >  
+  {{ if .Page.Params.title }}
+    <div class="row">
+      <div class="col-12 mb-5 text-center">
+        <h2>{{ .Page.Params.title }}</h2>
+      </div>
+    </div><!-- /.row -->
+  {{ end }}
+  {{ range $rindex, $ritem :=.Page.Params.rows }}
+    <div class="row">
+      {{ if .title }}
+        <div class="col-12 mb-5 text-center">
+          <h2>{{ .title }}</h2>
+        </div>
+      {{ end }}
+      {{ range $index, $item := .items }}           
+        <div class="col-12 col-sm-6 col-lg-3 m-0 p-0">  
+          <div class="card border-0 h-100">
+            {{ with .faicon }}
+              <div class="card-header text-center">
+                {{ partial "fontawesome.html" . }}
+              </div>	   
+            {{ end }}          
+            {{ with .image }}
+              {{ $number = add $number 1 }} 
+              {{ $resource := $headless.Resources.GetMatch ( printf "image%d" $number ) }} 
+              {{ $image := $resource.Fill "360x360" }} 
+              <img class="card-img-top rounded-0 h-100" src="{{ $image.RelPermalink }}" alt=""> 
+            {{ end }}
+            {{ if .title }}
+              <div class="card-body text-center my-auto">
+                <h3 class="card-title font-weight-bold">{{ .title }}</h3>
+                <p class="lead font-weight-normal card-text">{{ .description }}</p>
+              </div>
+            {{ end }}  
+            {{ if .url }}
+              <div class="card-footer">
+                <a href="{{ .url }}" class="btn btn-primary">{{ i18n "link" }}</a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div><!-- /.row -->
+  {{ end }}
+</section><!-- /.container -->

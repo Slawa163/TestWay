@@ -1,0 +1,52 @@
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid pt-5" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >
+  {{ $number := 1 }}
+  {{ if .Page.Params.title }}
+    <div class="row mx-auto">
+      <div class="col-md-12 mb-5 text-center">
+        <h2>{{ .Page.Params.title }}</h2>
+        <hr>
+      </div>
+    </div><!-- /.row -->
+  {{ end }}
+  {{ range .Page.Params.rows }}
+    <div class="row mx-auto">
+      {{ if .title }}
+        <div class="col-md-12 mb-5 text-center">
+          <h2>{{ .title }}</h2>
+          <hr>
+        </div>
+      {{ end }}
+      {{ range $index, $item := .items }}
+        <div class="col-md-4 mb-5 pl-2 pr-0 d-flex align-items-start">
+          <div class="border-0 rounded-circle lead font-weight-bold" > {{ $number }} </div>
+          {{ $number = add $number 1 }} 
+          <div class="card h-100 border-0 ml-0 pl-0">
+            {{ with .faicon }}
+              <div class="card-header text-center">
+                {{ partial "fontawesome.html" . }}
+              </div>
+            {{ end }}
+            {{ with .image }}
+              <img class="card-img-top" src="{{ . }}" alt="">
+            {{ end }}
+            <div class="card-body pt-0 mx-0 px-0"> 
+              <h5 class="card-title text-warn pl-4"> {{ .title }} </h5>	
+              {{ if .descriptions }}
+                <ul>
+                  {{ range .descriptions }}
+                    <li class="card-text small">{{ .title }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </div>
+            {{ if .url }}
+              <div class="card-footer">
+                <a href="{{ .url }}" class="btn btn-primary">{{ i18n "link" }}</a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div><!-- /.row -->
+  {{ end }}
+</section><!-- /.container -->

@@ -1,0 +1,79 @@
+# Page settings
+
+# baseURL = "http://n92721ld.beget.tech/"
+baseURL = "https://testwayrus.com/"
+# baseURL = "https://TestWay.netlify.app"
+theme = "hugo-business-frontpage-theme"
+googleAnalytics = "UA-155548895-1"
+DefaultContentLanguage  = "en"
+defaultContentLanguageInSubdir = false
+[params]
+    googleMapsAPIKey = "rx52G9QktXbHDMUo7"
+    author = "SG"
+    description = "Business Frontpage - A business home page starter template for Bootstrap 4 featuring marketing boxes and a full width image header"
+#    email = "gus@63.ru"
+    email = "team@testwayrus.com"
+
+[languages]
+[languages.en]
+languageName     = "English"
+languageCode     = "en"
+contentDir       = "content"
+weight           = 1
+title            = "TestWayRUS"
+[languages.en.params]
+[languages.en.params.footer]
+          copyright = "Made by SG studio" 
+[languages.en.params.navbar]
+    current = true
+    name = "TESTWAYRUS"
+    url = "/"
+    [[languages.en.params.navbar.nav]]    
+    name = "Our services"
+    url = "/our_services/"
+    [[languages.en.params.navbar.nav]]
+    name = "Vehicle testing"
+    url = "/vehicle_testing/"
+    [[languages.en.params.navbar.nav]]
+    name = "Test benches"
+    url = "/test_bench/"
+    [[languages.en.params.navbar.nav]]
+    name = "Contact us"
+    url = "/contact/"
+  
+[languages.ru]
+languageName     = "Русский"
+languageCode     = "ru"
+contentDir       = "content/ru"
+weight           = 2
+title            = "TestWayRUS"
+[languages.ru.params]
+[languages.ru.params.footer]
+          copyright = "Сделано SG studio" 
+[languages.ru.params.navbar]
+    current = true
+    name = "TESTWAYRUS"
+    url = "/ru/"
+    [[languages.ru.params.navbar.nav]]    
+    name = "Наши услуги"
+    url = "/ru/our_services/"
+    [[languages.ru.params.navbar.nav]]
+    name = "Тестировнание автомобиля"
+    url = "/ru/vehicle_testing/"
+    [[languages.ru.params.navbar.nav]]
+    name = "Испытательные стенды"
+    url = "/ru/test_bench/"
+    [[languages.ru.params.navbar.nav]]
+    name = "Связаться с нами"
+    url = "/ru/contact/"
+
+
+ 
+
+            
+
+
+ 
+
+
+

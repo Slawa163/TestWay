@@ -1,0 +1,34 @@
+{{ $headless := .GetPage "images"  }}
+{{ $number := 0 }} 
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >
+  {{ if .Page.Params.title }}
+    <div class="row mx-auto">
+      <div class="col-12 col-lg-9 mb-5 text-center my-auto">
+        <h2>{{ .Page.Params.title }}</h2>
+      </div>
+    </div><!-- /.row -->
+  {{ end }}
+  {{ range .Page.Params.rows }}
+    <div class="row align-items-stretch mx-auto pb-5">
+      {{ range .items }}
+        <div class="col-12 col-md-5 px-0 mx-auto">
+          <div class="card border-0 px-auto">
+            {{ with .image }}
+              {{ $number = add $number 1 }} 
+              {{ $resource := $headless.Resources.GetMatch ( printf "oimage%d" $number ) }} 
+              {{ $image := $resource.Fill "360x230" }}
+              <img class="card-img-top h-100" src="{{ $image.RelPermalink }}" alt="">
+	          {{ end }}
+            {{ if .title }}
+              <div class="card-body px-0">
+                <h4 class="card-title mb-2 text-warn">{{ .title }}</h4>
+                <p class="card-text py-1">{{ .description }}</p>
+                <p class="card-text">{{ .tagline }}</p>
+              </div>
+            {{ end }}    
+          </div>
+        </div>
+      {{ end }}
+    </div><!-- /.row -->
+  {{ end }}
+</section><!-- /.container -->

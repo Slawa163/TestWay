@@ -1,0 +1,51 @@
+{{ $headless := .GetPage "images"  }}
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid py-5" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >
+  <div class="row justify-content-center align-items-stretch ">
+    <div class="col-12 col-sm-6 order-sm-last pr-0">
+      <div class="card h-100 w-100 border-0 justify-content-center bg-black">
+        <div class="card-body pt-2 pl-3 pb-0"> 
+          <h4 class="card-title font-weight-bold text-warn text-justify"> {{ .Page.Params.title }} </h4>
+          <h5 class="mb-2 text-white text-justify font-weight-light">{{ .Page.Params.tagline }}</h5>   
+          <h5 class="mb-2 text-white text-justify font-weight-light">{{ .Page.Params.description }}</h5> 
+        </div>
+        {{ if .Page.Params.descriptions }}
+          <div class="card-footer pl-0 text-white ml-0 lead"> 
+            <ul>
+              {{ range .Page.Params.descriptions }}
+                <li class="card-text">{{ .title }}</li>
+              {{ end }}
+            </ul>
+          </div>  
+        {{ end }}
+      </div>
+    </div>
+    <div class="col-11 col-sm-6 pr-0 "> 
+      <div class="row pb-0 mb-0">   
+        <div class="col-12">
+          <div class="card w-100 border-0 text-center justify-content-center">
+            {{ $resource := $headless.Resources.GetMatch "image1" }} 
+            {{ $image1 := $resource.Resize "600x720" }}
+            <img class="px-0 w-100" src="{{ $image1.RelPermalink }}" alt="">              
+          </div> 
+        </div>  
+      </div> 
+      <div class="row pb-0 mb-0">   
+        <div class="col-6">
+          <div class="card border-0">
+            {{ $resource := $headless.Resources.GetMatch "image2" }} 
+            {{ $image2 := $resource.Resize "300x360" }}
+            <img class="pr-0 pt-3 w-100" src="{{ $image2.RelPermalink }}" alt="">
+          </div>   
+        </div>  
+        <div class="col-6">
+          <div class="card border-0">
+            {{ $resource := $headless.Resources.GetMatch "image3" }} 
+            {{ $image3 := $resource.Resize "300x360" }}
+            <img class="px-0 pt-3 w-100" src="{{ $image3.RelPermalink }}" alt="">
+          </div> 
+        </div>  
+      </div>  
+    </div>
+  </div>
+  <div class="content">{{.Content}}</div>
+</section>

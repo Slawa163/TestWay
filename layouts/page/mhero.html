@@ -1,0 +1,16 @@
+
+  <section id="{{ .File.TranslationBaseName }}" class="container-fluid" {{ with .Page.Params.background_image }} style="background-image: url({{ . }}); background-size: cover;" {{ end}} >
+    <div class="row h-100 align-items-center justify-content-start bg-black-50">
+      <div class="col-12 col-md-9 col-xl-8 mt-5 pt-4 pt-sm-5 ml-1 mr-sm-0 ">
+        <h1><span class="two-color">{{ .Page.Params.name }}</span></h1>
+        <h3 class="text-warn mt-3 pt-3 mb-0 pb-0">{{ .Page.Params.description1 }}</h3>
+        <h3 class="text-warn pt-0 mt-0 mb-3">{{ .Page.Params.description2 }}</h3>
+        {{ range .Page.Params.descriptions }}
+          {{ with .title }} <h5 class="mt-3 mb-0 py-0 pr-0 text-warn ">{{ . }}</h5> {{ end }}
+          <h6 class="mt-0 mb-4 pt-0 pb-2 pr-0">{{ .tagline }}</h6>
+        {{ end }}
+        <div class="content text-white ml-4">{{.Content}}</div>
+        {{ if .Page.Params.link_url }} <a class="btn text-black px-5 py-3 mt-2 mb-5 bg-warn" href="{{ .Page.Params.link_url }}" role="button" target="_blank">{{ .Page.Params.link_text }}</a> {{ end }}
+      </div>
+    </div>
+  </section>

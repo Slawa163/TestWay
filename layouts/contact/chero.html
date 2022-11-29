@@ -1,0 +1,44 @@
+  <section id="{{ .File.TranslationBaseName }}" class="container-fluid px-0" {{ with .Page.Params.background_image }} style="background-image: url( {{ . }} ); background-size: cover;" {{ end}} >
+      <div class="row h-100 align-items-center justify-content-center bg-black-50 py-5 px-auto">
+        <div class="col-11 col-md-9 col-lg-7">
+          <form id="contact-form" class="contact-form" method="POST" action="{{ "/thanks/"| relLangURL }}" name="contact" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            {{with .Page.Params.name }} <h2 class="font-weight-bold text-center text-warn pt-2">{{ . }}</h2> {{ end }}
+            {{with .Page.Params.description }} <h2 class="font-weight-bold text-center text-warn pb-2">{{ . }}</h2> {{ end }}
+            <div class="form-group">
+                <input type="text" class="form-control" id="firmname" placeholder="{{ i18n "company" }}" name="name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" placeholder="{{ i18n "email" }}" name="_replyto" required>
+            </div>
+            <div class="form-group"> 
+              <input type="text" class="form-control" id="subject" placeholder="{{ i18n "subject" }}" name="subject" required>
+            </div>
+            <div class="form-group"> 
+            <p><textarea cols="40" rows="3" class="form-control" id="message" placeholder="{{ i18n "message" }}" name="message" required></textarea></p>
+            </div>
+            <input type="submit" class="bg-warn btn w-100 text-white" value="{{ i18n "send" }}" data-toggle="modal" data-target="#thanks">
+            {{with .Page.Params.tagline }}  <p class="my-2 small text-white w-100 text-center">{{ . }}</p> {{ end }}  
+          </form> 
+          <div class="content">{{.Content}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Modal --> 
+  <div id="thanks1" class="modal fade text-center" >
+    <div class="modal-dialog modal-xl vh-100 mt-0 ml-0">
+      <div class="modal-content vh-100 vw-100">
+        <div class="modal-header border-0 float-left py-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>  
+        </div>
+        <div class="modal-body h-100 flex-row">
+        </div><!-- /.modal-body -->
+        <h3>Thanks</h3>
+        <div class="modal-footer border-0">
+        </div>       
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->  

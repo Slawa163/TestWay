@@ -1,0 +1,41 @@
+<section id="{{ .File.TranslationBaseName }}" class="container-fluid" {{ with .Page.Params.background_image }} style=" background-image: url({{ . }}); background-size: cover;" {{ end}} >
+  {{ if .Page.Params.title }}
+    <div class="row">
+      <div class="col-md-12 mt-5 text-center text-warn">
+        <h1>{{ .Page.Params.title }}</h1>
+      </div>
+    </div><!-- /.row -->
+  {{ end }}
+  {{ range .Page.Params.rows }}
+    <div class="row mb-5">
+      {{ if .title }}
+        <div class="col-md-12 mt-4 text-center">
+          <h3>{{ .title }}</h3>
+        </div>
+      {{ end }}
+      {{ range .items }}
+        <div class="col-md-4 mt-4">
+          <div class="card h-100 border-0 bg-transparent">
+            {{ with .faicon }}
+              <div class="card-header text-center border-bottom-0 bg-transparent">
+                {{ partial "fontawesome.html" . }}
+	            </div>
+	          {{ end }}
+            {{ with .image }}
+              <img class="card-img-top" src="{{ . }}" alt="">
+	          {{ end }}
+            <div class="card-body small text-center">
+              <h5 class="card-title text-warning">{{ .title }}</h5>
+              <h6 class="card-text font-weight-light">{{ .description }}</h6>
+            </div>
+	          {{ if .url }}
+              <div class="card-footer">
+                <a href="{{ .url }}" class="btn btn-primary">{{ i18n "link" }}</a>
+              </div>
+	          {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div><!-- /.row -->
+  {{ end }}
+</section><!-- /.container -->
