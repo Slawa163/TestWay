@@ -1,7 +1,7 @@
 # Page settings
 
 # baseURL = "http://n92721ld.beget.tech/"
-baseURL = "https://testwayrus.com/"
+baseURL = "https://testwayrus.netlify.app/"
 # baseURL = "https://TestWay.netlify.app"
 theme = "hugo-business-frontpage-theme"
 googleAnalytics = "UA-155548895-1"
